@@ -1,5 +1,6 @@
 package com.csi.weavermanufacturing_backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,5 +20,6 @@ public class ChatHistory {
     private User user;
 
     @OneToMany(mappedBy = "chatHistory", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Message> messages;
 }

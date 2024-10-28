@@ -1,6 +1,7 @@
 package com.csi.weavermanufacturing_backend.entity;
 
 import com.csi.weavermanufacturing_backend.enums.MessageType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ public class Message {
 
     @ManyToOne
     @JoinColumn(name = "chat_id", nullable = false)
+    @JsonBackReference
     private ChatHistory chatHistory;
 
     @Enumerated(EnumType.STRING)
@@ -26,4 +28,3 @@ public class Message {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 }
-
